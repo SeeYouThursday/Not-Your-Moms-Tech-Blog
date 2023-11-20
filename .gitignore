@@ -1,0 +1,4 @@
+cRM/
+nodeModules
+.DS_Store
+.env
