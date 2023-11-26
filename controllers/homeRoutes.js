@@ -1,5 +1,6 @@
 const router = require('express').Router();
 // check back on this
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   res.render('main');

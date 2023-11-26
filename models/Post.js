@@ -1,5 +1,5 @@
 //Used for the main blog post
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // const { User, Comment } = require("../models");
 
@@ -8,34 +8,34 @@ class Post extends Model {}
 Post.init(
   {
     id: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     user_id: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
       },
     },
     content: {
-      type: Datatypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
     },
     comment_id: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
-        model: 'Comment',
+        model: 'comment',
         key: 'id',
       },
     },
     date: {
-      type: Datatypes.DATEONLY,
+      type: DataTypes.DATEONLY,
       allowNull: false,
-      defaultValue: Datatypes.NOW,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
