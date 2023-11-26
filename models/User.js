@@ -1,5 +1,5 @@
-const { Model, Datatypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, Datatypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -28,7 +28,8 @@ User.init(
         type: Datatypes.STRING,
         allowNull: false,
         validate: {
-          len: [8],
+          len: [8, 16],
+
           // require a pass length of at least 8 char
         },
       },
@@ -56,7 +57,7 @@ User.init(
     timestamps: false,
     underscored: true,
     freezeTableName: true,
-    modelName: "user",
+    modelName: 'user',
   }
 );
 

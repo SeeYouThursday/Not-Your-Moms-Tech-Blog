@@ -20,7 +20,7 @@ Post.init(
         key: 'id',
       },
     },
-    post: {
+    content: {
       type: Datatypes.STRING,
       allowNull: false,
       primaryKey: true,

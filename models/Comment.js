@@ -17,7 +17,7 @@ Comment.init(
       allowNull: false,
       defaultValue: Datatypes.DATEONLY,
     },
-    comment: {
+    content: {
       type: Datatypes.STRING,
       allowNull: false,
     },
