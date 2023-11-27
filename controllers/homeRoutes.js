@@ -18,44 +18,45 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    //Taken care of in handlebars page with helper
-    // if (!postData) {
-    //   return res.json({ message: 'No posts to display!' });
-    // }
-
     const posts = postData.map((post) => post.get({ plain: true }));
+
     res.render('homepage', { posts });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//Get ALL Posts (and any comments if they exist)
-//TODO finish this!
-// router.get('/', withAuth, async (req, res) => {
-//   try {
-//     const postData = await User.findAll({
-//       include: [
-//         { model: User, attributes: ['username'] },
-//         { model: Comment, attributes: ['comment_id'] },
-//       ],
-//     });
-//   } catch (err) {}
-// });
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.id },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['content'],
+        },
+      ],
+    });
 
-//Get one post (and any comments if they exist)
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('dashboard', { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //login route
-// router.get('/login', (req, res) => {
-//   if (req.session.logged_in) {
-//     res.redirect('/dashboard');
-//     return;
-//   }
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
 
-//   res.render('login');
-// });
-
-//dashboard route
-// router.get('/dashboard', (req, res) => {});
+  res.render('login');
+});
 
 module.exports = router;
