@@ -1,0 +1,10 @@
+<div class='dashboard'>
+  <h2>Posts</h2>
+  <div class='posts'>
+    {{! render posts if user has any posts }}
+    {{#each posts as |post|}}
+      <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
+      <p>{{post.content}}</p>
+    {{/each}}
+  </div>
+</div>

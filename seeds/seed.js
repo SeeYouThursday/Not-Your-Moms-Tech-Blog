@@ -12,7 +12,11 @@ const sequelize = require('../config/connection');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await User.bulkCreate(users);
+  await User.bulkCreate(users, {
+    individualHooks: true,
+    //makes the passwords hashed through the beforeCreate hook in the User model
+    returning: true,
+  });
 
   await Post.bulkCreate(posts);
 
