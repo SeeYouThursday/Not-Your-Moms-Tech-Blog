@@ -26,6 +26,30 @@ router.get('/', async (req, res) => {
   }
 });
 
+//TODO edit handlebars for individual posts
+router.get('/post/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['content'],
+        },
+      ],
+    });
+
+    // const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('individual_post', {
+      postData,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {}
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -47,6 +71,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/create', withAuth, async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('createPost');
 });
 
 //login route

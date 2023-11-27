@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = userData.checkPassword(req.body.password);
 
     //check the password
     if (!validPassword) {
@@ -66,7 +66,6 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log(req.body.username);
     res.status(400).json(err);
     return req.body.username;
   }
