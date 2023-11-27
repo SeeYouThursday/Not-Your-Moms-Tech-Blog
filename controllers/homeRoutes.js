@@ -18,6 +18,11 @@ router.get('/', async (req, res) => {
       ],
     });
 
+    //Taken care of in handlebars page with helper
+    // if (!postData) {
+    //   return res.json({ message: 'No posts to display!' });
+    // }
+
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('homepage', { posts });
   } catch (err) {
