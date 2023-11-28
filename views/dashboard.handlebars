@@ -3,13 +3,13 @@
   <a href='/create' class='btn btn-primary' id='create-post'>Create New Post</a>
   <div class='posts card'>
     {{! render posts if user has any posts }}
-
-    {{#each posts as |post|}}
-      <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
-      <p>{{post.content}}</p>
-      <p>Posted on {{post.date}} by {{user.username}}</p>
-    {{/each}}
-
+    {{#if posts.length}}
+      {{#each posts as |post|}}
+        <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
+        <p>{{post.content}}</p>
+        <p>Posted on {{post.date}} by {{user.username}}</p>
+      {{/each}}
+    {{/if}}
   </div>
 </div>
 

@@ -10,7 +10,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Create the Handlebars.js engine object with custom helper functions
+// Create the Handlebars.js engine object
 const hbs = exphbs.create();
 
 const sess = {

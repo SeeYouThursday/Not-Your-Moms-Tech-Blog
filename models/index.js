@@ -2,20 +2,20 @@
 const Post = require('./Post');
 const Comment = require('./Comment');
 const User = require('./User');
-
+// SHOW INDEX FROM user;
 // Posts belong to users //!necessary for page to load -causes eager err
 Post.belongsTo(User, {
   foreignKey: 'user_id',
 });
 // Users have many posts
-// User.hasMany(Post, {
-//   foreignKey: 'user_id',
-// });
+User.hasMany(Post, {
+  foreignKey: 'user_id',
+});
 
 // Users have many comments
-// User.hasMany(Comment, {
-//   foreignKey: 'user_id',
-// });
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+});
 
 // Posts have many comments
 Post.hasMany(Comment, {
