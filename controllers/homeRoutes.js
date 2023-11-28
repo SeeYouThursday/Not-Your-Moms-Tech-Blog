@@ -41,9 +41,9 @@ router.get('/post/:id', withAuth, async (req, res) => {
         },
       ],
     });
-
+    console.log('these posts', postData);
     // const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('individual_post', {
+    res.render('selected_post', {
       postData,
       logged_in: req.session.logged_in,
     });
@@ -79,7 +79,7 @@ router.get('/create', withAuth, async (req, res) => {
     return;
   }
 
-  res.render('createPost');
+  res.render('createPost', { logged_in: req.session.logged_in });
 });
 
 //login route
