@@ -22,7 +22,13 @@ const postSubmitHandler = async (event) => {
   }
 };
 
+const postUpdateHandler = async (event) => {};
+
+const postDeleteHandler = async (event) => {};
+
 //EventHandlers
 document
   .getElementById('createPost')
   .addEventListener('submit', postSubmitHandler);
+
+document.getElementById('')

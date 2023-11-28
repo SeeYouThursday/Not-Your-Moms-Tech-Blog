@@ -8,9 +8,13 @@
         <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
         <p>{{post.content}}</p>
         <p>Posted on {{post.date}} by {{user.username}}</p>
+        <div class='display-flex justify-space-around align-center'><button
+            class='btn btn-primary'
+          >Update</button><button class='btn btn-primary'>Delete</button></div>
       {{/each}}
     {{/if}}
   </div>
 </div>
 
 {{! <script src='./js/post.js'></script> }}
+<script></script>

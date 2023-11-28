@@ -3,5 +3,9 @@
   <p>{{content}}</p>
   <p>Posted on {{date}} by {{user.username}}</p>
 </div> 
-
+<div>{{#each comment as |comment|}}
+  <p>{{comment.content}}</p>
+  <p>{{user.username}}</p>
+  <p>{{comment.date}}</p>{{/each}}
+</div>
 <script src='./js/post.js'>
