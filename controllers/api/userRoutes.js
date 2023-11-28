@@ -28,6 +28,7 @@ router.post('/', async (req, res) => {
       req.session.logged_in = true;
 
       res.status(200).json(userData);
+      // res.redirect('/dashboard');
     });
   } catch (err) {
     console.log(err);

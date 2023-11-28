@@ -3,6 +3,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { Post, User, Comment } = require('../models');
 
+//Homepage Route
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -73,6 +74,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+//Create New Post
 router.get('/create', withAuth, async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
@@ -92,4 +94,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//Sign In route
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 module.exports = router;
