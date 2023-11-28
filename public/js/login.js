@@ -50,7 +50,3 @@ const signupFormHandler = async (event) => {
 document
   .getElementById('login-form')
   .addEventListener('submit', loginFormHandler);
-
-document
-  .getElementById('signup-form')
-  .addEventListener('submit', signupFormHandler);

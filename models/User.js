@@ -22,7 +22,6 @@ User.init(
       unique: true,
       validate: {
         isAlphanumeric: true,
-        notEmpty: true,
       },
     },
     password: {
