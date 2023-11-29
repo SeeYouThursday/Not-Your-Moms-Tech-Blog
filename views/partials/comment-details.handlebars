@@ -1,6 +1,20 @@
 {{! the post title and the date created }}
 <div>
-  {{comment.content}}
-  {{comment.}}
-  <p>{{comment.date}}</p>
-</div>
+
+    <p>{{comments.content}}</p>
+    <p>{{comments.user.username}}</p>
+    <p>{{comments.date}}</p>
+    <div class='addComments'>
+      <form class='addComment'>
+        <label>Comment</label>
+        <input
+          type='text'
+          name='newComment'
+          class='comments'
+          id='{{comments.id}}'
+        />
+        <button type='submit' data-id='{{comments.id}}'>Comment</button>
+      </form>
+    </div>
+
+<script src='/js/comment.js'></script>
