@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //Update Post
-router.put('update/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     Post.update(
       { ...req.body, user_id: req.session.user_id },

@@ -1,3 +1,11 @@
+const responseCheck = (response, method) => {
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert(`Failed to ${method} post`);
+  }
+};
+
 const postSubmitHandler = async (event) => {
   event.preventDefault();
 
@@ -13,22 +21,13 @@ const postSubmitHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace('/dashboard');
-      console.log('GREAT SUCCESS');
     } else {
-      console.log(await response.json(), 'HELLO THEREEEEEEEEE');
-      //TODO show modal here instead
-      // alert(response.statusText);
+      alert(response.statusText);
     }
   }
 };
-
-const postUpdateHandler = async (event) => {};
-
-const postDeleteHandler = async (event) => {};
 
 //EventHandlers
 document
   .getElementById('createPost')
   .addEventListener('submit', postSubmitHandler);
-
-document.getElementById('')

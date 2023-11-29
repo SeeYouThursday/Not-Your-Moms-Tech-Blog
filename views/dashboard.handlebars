@@ -5,16 +5,21 @@
     {{! render posts if user has any posts }}
     {{#if posts.length}}
       {{#each posts as |post|}}
-        <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
+        <a href='/post/{{post.id}}'><h3
+            class='post-title'
+          >{{post.title}}</h3></a>
         <p>{{post.content}}</p>
         <p>Posted on {{post.date}} by {{user.username}}</p>
-        <div class='display-flex justify-space-around align-center'><button
+        <div class='display-flex justify-space-around align-center'><a
+            href='/update/{{post.id}}'
             class='btn btn-primary'
-          >Update</button><button class='btn btn-primary'>Delete</button></div>
+          >Update</a><button
+            class='btn btn-danger delete'
+            data-id='{{post.id}}'
+          >Delete</button></div>
       {{/each}}
     {{/if}}
   </div>
 </div>
 
-{{! <script src='./js/post.js'></script> }}
-<script></script>
+<script src='./js/updateDelPost.js'></script>

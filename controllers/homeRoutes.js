@@ -27,7 +27,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-//TODO edit handlebars for individual posts
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -47,7 +46,9 @@ router.get('/post/:id', withAuth, async (req, res) => {
       ...posts,
       logged_in: req.session.logged_in,
     });
-  } catch (err) {}
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -79,6 +80,25 @@ router.get('/create', withAuth, async (req, res) => {
   }
 
   res.render('createPost', { logged_in: req.session.logged_in });
+});
+
+router.get('/update/:id', withAuth, async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  try {
+    const postData = await Post.findByPk(req.params.id);
+    const posts = postData.get({ plain: true });
+    // const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('updatePost', {
+      ...posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //login route
