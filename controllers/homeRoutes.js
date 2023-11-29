@@ -37,6 +37,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
+          include: [{ model: User, attributes: ['username'] }],
         },
       ],
     });
@@ -82,6 +83,7 @@ router.get('/create', withAuth, async (req, res) => {
   res.render('createPost', { logged_in: req.session.logged_in });
 });
 
+//get info for update
 router.get('/update/:id', withAuth, async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');

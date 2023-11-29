@@ -19,7 +19,7 @@ router.post('/', withAuth, async (req, res) => {
 //Update Post
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    Post.update(
+    await Post.update(
       { ...req.body, user_id: req.session.user_id },
       {
         where: {
@@ -28,7 +28,8 @@ router.put('/:id', withAuth, async (req, res) => {
       }
     );
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res.status(500).json(err);
   }
 });
 
