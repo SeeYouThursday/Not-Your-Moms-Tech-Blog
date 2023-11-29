@@ -1,19 +1,32 @@
 commentHandler = async (event) => {
   event.preventDefault();
-  const comment = document.querySelector('#newComment').value.trim();
+  try {
+    const content = document.querySelector('#newComment').value.trim();
 
-  if(comment) {
-    const response = await fetch('/api/comments', {
-      method: 'POST',
-      body: JSON.stringify({ comment }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const id = window.location.pathname.split('/');
+    console.log(id);
 
-    if (response.ok) {
+    const post_id = parseInt(id[id.length - 1]);
+
+    if (content && post_id) {
+      const response = await fetch(
+        `${window.location.origin}/api/posts/comments/`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ content, post_id }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.ok) {
         document.location.reload();
+      }
     }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 //Event Listeners
