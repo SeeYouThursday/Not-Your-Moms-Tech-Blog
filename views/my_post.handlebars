@@ -16,21 +16,23 @@
                 <label for='newComment'>Comment</label>
                 <input type='text' id='newComment' name='newComment' />
                 <button class='btn right waves-teal' type='submit'>Comment</button>
-                 <a
-                href='/update/{{id}}'
-                class='btn btn-primary right waves-teal'
-              >Update</a><button
-                class='btn red delete right waves-teal'
-                data-id='{{id}}'
-              >Delete</button>
+                 
                 </form>
             </div>
         
-           <div class='flex-around'>
-             
-            </div>
+           
             {{/if}}
+            <div class='flex-around'>
+             <a
+                href='/update/{{id}}'
+                class='btn btn-primary right waves-teal'
+              >Update</a><button
+                class='btn red delete left waves-teal'
+                data-id='{{id}}'
+              >Delete</button>
+            </div>
     </div>
     <script src='/js/comment.js'></script>
+    <script src='/js/delete.js'></script>
     </div>
 </div>

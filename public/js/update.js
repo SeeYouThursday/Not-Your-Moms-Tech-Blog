@@ -1,12 +1,12 @@
-// const responseCheck = require('../../utils/response_check');
-
 const postUpdateHandler = async (event) => {
   event.preventDefault();
+  event.stopPropagation();
 
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
     const title = document.getElementById('newTitle').value.trim();
     const postContent = document.getElementById('post-content').value.trim();
+
     const body = JSON.stringify({
       title: title,
       content: postContent,
@@ -26,12 +26,18 @@ const postUpdateHandler = async (event) => {
         }
       );
 
-      console.log('Post update response:', response); // Added console.log statement for debugging
+      console.log(
+        'Response status:',
+        response.status,
+        'Response ok:',
+        response.ok
+      );
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
         alert(`Failed to update post`);
       }
+      console.log('After redirection');
     } catch (error) {
       console.error('Error updating post:', error); // Added console.error statement for debugging
     }
@@ -40,11 +46,9 @@ const postUpdateHandler = async (event) => {
 
 //Event Listeners
 
-document
-  .getElementById('update-post')
-  .addEventListener('click', async (event) => {
-    await postUpdateHandler(event);
-  });
+document.getElementById('update-post').addEventListener('click', (event) => {
+  postUpdateHandler(event);
+});
 
 // else {
 //   console.log('something went wrong');

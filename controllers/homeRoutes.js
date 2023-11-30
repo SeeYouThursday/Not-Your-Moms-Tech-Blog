@@ -62,7 +62,31 @@ router.get('/post/:id', withAuth, async (req, res) => {
 });
 
 router.get('/mypost/:id', withAuth, async (req, res) => {
-  postManagement(`my_post`, req, res);
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
+        },
+      ],
+    });
+    const posts = postData.get({ plain: true });
+    // const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('my_post', {
+      ...posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
