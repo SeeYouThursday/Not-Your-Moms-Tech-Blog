@@ -1,24 +1,29 @@
 <div class='dashboard'>
   <h2>{{username}}'s Dashboard</h2>
   <a href='/create' class='btn btn-primary' id='create-post'>Create New Post</a>
-  <div class='posts card'>
-    {{! render posts if user has any posts }}
-    {{#if posts.length}}
-      {{#each posts as |post|}}
-        <a href='/post/{{post.id}}'><h3
-            class='post-title'
-          >{{post.title}}</h3></a>
-        <p>{{post.content}}</p>
-        <p>Posted on {{post.date}} by {{user.username}}</p>
-        <div class='display-flex justify-space-around align-center'><a
-            href='/update/{{post.id}}'
-            class='btn btn-primary'
-          >Update</a><button
-            class='btn btn-danger delete'
-            data-id='{{post.id}}'
-          >Delete</button></div>
-      {{/each}}
-    {{/if}}
+  <div class='px-2'>
+      {{! render posts if user has any posts }}
+      {{#if posts.length}}
+        {{#each posts as |post|}}
+        <div class='posts card'>
+          <div class='card-content'><a href='/mypost/{{post.id}}'><h3
+                class='post-title'
+              >{{post.title}}</h3></a>
+            <p>{{post.content}}</p>
+            <p>Posted on {{post.date}}</p>
+            <hr />
+            {{!-- <div class='flex-around'>
+              <a
+                href='/update/{{post.id}}'
+                class='btn btn-primary'
+              >Update</a><button
+                class='btn btn-danger delete'
+                data-id='{{post.id}}'
+              >Delete</button>
+            </div> --}}
+          </div>
+        {{/each}}
+      {{/if}}
   </div>
 </div>
 

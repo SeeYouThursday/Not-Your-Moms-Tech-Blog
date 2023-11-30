@@ -3,6 +3,34 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { Post, User, Comment } = require('../models');
 
+const postManagement = async (handlebar, req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
+        },
+      ],
+    });
+    const posts = postData.get({ plain: true });
+    // const posts = postData.map((post) => post.get({ plain: true }));
+    res.render(`${handlebar}`, {
+      ...posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 //Homepage Route
 router.get('/', async (req, res) => {
   try {
@@ -28,32 +56,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+//individual post route
 router.get('/post/:id', withAuth, async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-        {
-          model: Comment,
-          include: {
-            model: User,
-            attributes: ['username'],
-          },
-        },
-      ],
-    });
-    const posts = postData.get({ plain: true });
-    // const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('selected_post', {
-      ...posts,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  postManagement(`selected_post`, req, res);
+});
+
+router.get('/mypost/:id', withAuth, async (req, res) => {
+  postManagement(`my_post`, req, res);
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {

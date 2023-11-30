@@ -9,13 +9,15 @@
       <p>{{content}}</p>
       <p>{{user.username}} on {{date}}<p>
     {{/each}} 
+      {{#if logged_in}}
       <div class='addComments card'>
         <form id='addComment'>
           <label for='newComment'>Comment</label>
           <input type='text' id='newComment' name='newComment' />
-          <button type='submit'>Comment</button>
+          <button class='btn right' type='submit'>Comment</button>
         </form>
       </div>
+      {{/if}}
   </div>
   <script src='/js/comment.js'></script>
 </div>

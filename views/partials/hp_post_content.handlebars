@@ -1,6 +1,31 @@
 {{#each posts as |post|}}
-  <a href='/post/{{post.id}}'><h3>{{post.title}}</h3></a>
-  <p>Posted on {{post.date}}</p>
+  <div class='hoverable card'>
+    <div class='card-content'>
+      <a href='/post/{{post.id}}'><span
+          class='card-title'
+        >{{post.title}}</span></a>
+      <p>Posted on {{post.date}}</p>
+    </div>
+  </div>
 {{/each}}
-
+{{!-- <div class='container row'>
+  {{#each posts as |post|}}
+    <div class=''>
+      <div class='col s12 m12'>
+        <div class='card blue-grey darken-1 hoverable'>
+          <div class='card-content white-text'>
+            <a href='/post/{{post.id}}'><span
+                class='card-title'
+              >{{post.title}}</span></a>
+            {{! <p>I am a very simple card. I am good at containing small bits of
+          information. I am convenient because I require little markup to use
+          effectively.</p> }}
+          </div>
+          <div class='card-action'>
+            <p>Posted on {{post.date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>{{/each}}
+</div> --}}
 {{!-- {{! SHOW INDEX FROM user; }} --}}
