@@ -21,7 +21,7 @@ All dependencies are listed in the package.json file.
 
 ## Usage
 
-Add Screenshot Here
+![Homepage Screenshot](./public/images/smallerhp.png)
 
 Visit the deployed application's link: <https://not-your-moms-tech-blog-5e4e2d95a074.herokuapp.com/>
 

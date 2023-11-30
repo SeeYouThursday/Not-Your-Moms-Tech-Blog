@@ -19,7 +19,7 @@ const sess = {
     //30 min
     maxAge: 1800000,
     httpOnly: true,
-    secure: false,
+    secure: true,
     sameSite: 'strict',
   },
   resave: false,

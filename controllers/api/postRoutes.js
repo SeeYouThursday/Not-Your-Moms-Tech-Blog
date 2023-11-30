@@ -41,6 +41,8 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       }
     );
+    // res.send('Success!');
+    res.status(200).send('Success!');
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
