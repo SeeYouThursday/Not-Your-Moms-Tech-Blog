@@ -19,6 +19,8 @@ To install necessary dependencies, run the following command:
 
 ## Usage
 
+Add Screenshot Here
+
 To use this application, run the following command:
 
 visit the deployed application's link: <https://not-your-moms-tech-blog-5e4e2d95a074.herokuapp.com/>
