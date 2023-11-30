@@ -33,3 +33,7 @@ main {
   justify-content: space-around;
   align-items: center;
 }
+
+#mini-logout {
+  cursor: pointer;
+}
