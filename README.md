@@ -30,3 +30,7 @@ To begin, click on the "Login" link in the navigation bar. If you do not have an
 ## Questions
 
 If you have any questions about the repo, open an issue on the [Repository](https://github.com/SeeYouThursday/Not-Your-Moms-Tech-Blog). You can find more of my work at [SeeYouThursday](github.com/SeeYouThursday).
+
+## License
+
+This project is licensed under the MIT License.
