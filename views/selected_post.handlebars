@@ -1,23 +1,27 @@
-<div id='postId' data-id='{{id}}'>
+<div id='postId' class='card' data-id='{{id}}'>
   <h3>{{title}}</h3>
   <p>{{content}}</p>
   <p>Posted on {{date}} by {{user.username}}</p>
 </div>
-<div class='row'> 
-  {{#each comments }}
-    <div class='col'>
-      <p>{{content}}</p>
-      <p>{{user.username}} on {{date}}<p>
-    {{/each}} 
-      {{#if logged_in}}
-      <div class='addComments card'>
-        <form id='addComment'>
-          <label for='newComment'>Comment</label>
-          <input type='text' id='newComment' name='newComment' />
-          <button class='btn right' type='submit'>Comment</button>
-        </form>
+<div class='card'>
+  <div class='row'> 
+      {{#each comments}}
+      <div class='col m8'>
+          <p>{{content}}</p>
+          <p>Posted by {{user.username}} on {{date}}<p>
+          <hr />
       </div>
+      {{/each}} 
+      <br>
+      {{#if logged_in}}
+        <div class='addComments flex'>
+            <form id='addComment'>
+              <label for='newComment'>Comment</label>
+              <textarea type='text' id='newComment' name='newComment'></textarea>
+              <button class='btn right' type='submit'>Comment</button>
+            </form>
+        </div>
       {{/if}}
+    </div>
   </div>
   <script src='/js/comment.js'></script>
-</div>

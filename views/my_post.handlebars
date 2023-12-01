@@ -1,12 +1,25 @@
-<div>
+<div class='card card-padding'>
+    
     <div id='postId' data-id='{{id}}'>
-        <h3>{{title}}</h3>
+        <h3 class=''>{{title}}</h3>
         <p>{{content}}</p>
         <p>Posted on {{date}} by {{user.username}}</p>
     </div>
-    <div class='row'> 
+    <div class='flex-end'>
+             <a
+                href='/update/{{id}}'
+                class='btn btn-primary right waves-teal'
+              >Update</a><button
+                class='btn red delete left waves-teal'
+                data-id='{{id}}'
+              >Delete</button>
+    </div>
+    <hr/>
+    <br>
+    <br>
+    <div class=''> 
         {{#each comments }}
-            <div class='col'>
+            <div class=''>
             <p>{{content}}</p>
             <p>{{user.username}} on {{date}}<p>
         {{/each}} 
@@ -22,15 +35,7 @@
         
            
             {{/if}}
-            <div class='flex-around'>
-             <a
-                href='/update/{{id}}'
-                class='btn btn-primary right waves-teal'
-              >Update</a><button
-                class='btn red delete left waves-teal'
-                data-id='{{id}}'
-              >Delete</button>
-            </div>
+            
     </div>
     <script src='/js/comment.js'></script>
     <script src='/js/delete.js'></script>

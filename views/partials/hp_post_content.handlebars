@@ -4,7 +4,9 @@
       <a href='/post/{{post.id}}'><span
           class='card-title'
         >{{post.title}}</span></a>
-      <p>Posted on {{post.date}} by {{user.username}}</p>
+      <p>{{post.content}}</p>
+      <hr />
+      <p class='meta-info'>Posted on {{post.date}} by {{user.username}}</p>
     </div>
   </div>
 {{/each}}
